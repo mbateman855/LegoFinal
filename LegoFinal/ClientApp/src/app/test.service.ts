@@ -6,6 +6,7 @@ import { LegoResponse, Results } from './Models/LegoResponse';
 })
 export class TestService {
 
+  
   sets!: Results[];
 
   constructor(private legoResponse: LegoResponse, private results: Results) { }
@@ -14,3 +15,5 @@ export class TestService {
     return  
   }
 }
+
+//export class StarwarsClientService {//  postUrl: string = 'https://localhost/api/legoresponse/';//  constructor(private http: HttpClient) { }//  getPeople(): Observable<StarwarsPeople> {//    return this.http.get<StarwarsPeople>(this.postUrl);//  }//}
