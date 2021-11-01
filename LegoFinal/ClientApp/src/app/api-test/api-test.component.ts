@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { LegoResponse, Results } from '../Models/LegoResponse';
+import { Results } from '../Models/LegoResponse';
+import { TestService } from '../test.service';
 
 @Component({
   selector: 'app-api-test',
@@ -8,12 +9,12 @@ import { LegoResponse, Results } from '../Models/LegoResponse';
 })
 export class ApiTestComponent implements OnInit {
 
-  constructor() { }
+  constructor(private testService: TestService) { }
 
   sets!: Results[];
 
   ngOnInit() {
-  this.sets = this.
+    this.testService.getResults().subscribe(result => { this.sets = result; })
   }
 
 }

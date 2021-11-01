@@ -12,6 +12,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using System;
 
 namespace LegoFinal
 {
@@ -28,7 +29,9 @@ namespace LegoFinal
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddTransient<LegoClient>();
-            services.AddHttpClient();
+            services.AddHttpClient<LegoClient>(options =>
+options.BaseAddress = new Uri("https://rebrickable.com/api/v3/"));
+
             services.AddDbContext<ApplicationDbContext>(options =>
                 options.UseSqlServer(
                     Configuration.GetConnectionString("DefaultConnection")));
