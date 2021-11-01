@@ -1,0 +1,27 @@
+
+<h2>Your Wish List Items</h2>
+
+<p *ngIf="!wishListItems"><em>No items selected yet...</em></p>
+
+<table class='table table-striped' aria-labelledby="tableLabel" *ngIf="wishListItems">
+  <thead>
+    <tr>
+      <th>Set Name</th>
+      <th>Set Id</th>
+      <th>Quantity</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let wishlist of wishListItems">
+      <td>{{ wishlist.setName }}</td>
+      <td>{{ wishlist.setId }}</td>
+      <td>{{ wishlist.quantity }}</td>
+    </tr>
+  </tbody>
+</table>
+
+<div>
+  <button type="button" class="btn-primary btn-primary-outline pull-right" (click)="btnClick();"><i class="fa fa-plus"></i>Add to Wish List</button>
+</div>
+
+
