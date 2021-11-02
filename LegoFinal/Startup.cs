@@ -1,5 +1,6 @@
 using LegoFinal.Data;
 using LegoFinal.Models;
+using LegoFinal.Services;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -11,6 +12,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using System;
 
 namespace LegoFinal
 {
@@ -26,6 +28,10 @@ namespace LegoFinal
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddTransient<LegoClient>();
+            services.AddHttpClient<LegoClient>(options =>
+options.BaseAddress = new Uri("https://rebrickable.com/api/v3/"));
+
             services.AddDbContext<ApplicationDbContext>(options =>
                 options.UseSqlServer(
                     Configuration.GetConnectionString("DefaultConnection")));
