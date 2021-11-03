@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Results } from '../Models/LegoResponse';
+import { LegoResponse, Results } from '../Models/LegoResponse';
 import { TestService } from '../test.service';
 
 @Component({

@@ -13,6 +13,7 @@ import { ApiAuthorizationModule } from 'src/api-authorization/api-authorization.
 import { AuthorizeGuard } from 'src/api-authorization/authorize.guard';
 import { AuthorizeInterceptor } from 'src/api-authorization/authorize.interceptor';
 import { ApiTestComponent } from './api-test/api-test.component';
+//import { LegosClient } from './api-test/Services/LegosClient';
 
 @NgModule({
   declarations: [

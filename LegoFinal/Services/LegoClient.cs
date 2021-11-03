@@ -10,6 +10,7 @@ namespace LegoFinal.Services
     {
         private readonly HttpClient _httpClient;
 
+        //string apiUrl = ""
         public LegoClient(HttpClient httpClient)
         {
             _httpClient = httpClient;
