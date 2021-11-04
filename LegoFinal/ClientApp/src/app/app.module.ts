@@ -38,7 +38,7 @@ import { ApiTestComponent } from './api-test/api-test.component';
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: AuthorizeInterceptor, multi: true }
-  ],
+  ], 
   bootstrap: [AppComponent]
 })
 export class AppModule { }

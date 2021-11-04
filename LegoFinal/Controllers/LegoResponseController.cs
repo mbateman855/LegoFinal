@@ -1,4 +1,5 @@
-﻿using LegoFinal.Services;
+﻿using LegoFinal.Models;
+using LegoFinal.Services;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
@@ -13,19 +14,20 @@ namespace LegoFinal.Controllers
     [ApiController]
     public class LegoResponseController : ControllerBase
     {
-        private readonly LegoClient _legoClient;
+        private readonly ILegoClient _legoClient;
 
-        public LegoResponseController(LegoClient legoClient)
+        public LegoResponseController(ILegoClient legoClient)
         {
             _legoClient = legoClient;
         }
 
         // GET: api/<LegoResponseController>
         [HttpGet]
-        public async Task<string> Get()
+        public async Task<LegoResponse> Get()
         {
+            var legoResponse = await _legoClient.GetLegosAsync();
             //rename this method to be more specific
-            return await _legoClient.getLegos();
+            return legoResponse;
         }
 
         // GET api/<LegoResponseController>/5
