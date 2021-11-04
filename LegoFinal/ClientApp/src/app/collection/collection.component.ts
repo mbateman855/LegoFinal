@@ -17,6 +17,7 @@ export class CollectionComponent implements OnInit {
   ngOnInit() {
     this.collectionService.getCollection()
       .subscribe(result => {
+        console.log(result);
         this.collectionItems = result;
       })
   }
