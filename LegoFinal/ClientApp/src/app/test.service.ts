@@ -1,6 +1,7 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import { LegosClient } from './api-test/Services/LegosClient';
 import { LegoResponse, Results } from './Models/LegoResponse';
 
 @Injectable({
@@ -9,12 +10,30 @@ import { LegoResponse, Results } from './Models/LegoResponse';
 export class TestService {
 
   apiUrl: string = 'https://localhost:44334/api/legoresponse';
-  sets!: Results[];
+  //apiUrl: string = 'https://rebrickable.com/api/v3/lego/sets/';
+  //sets!: Results[];
 
-  constructor(private legoResponse: LegoResponse, private results: Results, private http: HttpClient) { }
+  constructor(private http: HttpClient/*, private legoClient: LegosClient*/) { }
+
+
 
   getResults() {
-    return this.http.get <LegoResponse["results"]>(this.apiUrl);
+
+    //const httpOptions = {
+    //  headers: new HttpHeaders({
+    //    'Content-Type': 'application/json',
+    //    Authorization: 'my-auth-token'
+    //  })
+    //};
+
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Authorization': 'key b49eae0c7f448967c55f64c24fc12bd0'
+      })
+    };
+    //httpOptions.headers.append('Authorization', 'key b49eae0c7f448967c55f64c24fc12bd0');
+
+    return this.http.get<LegoResponse["results"]>(this/*.legoClient*/.apiUrl, httpOptions)
   }
 }
 

@@ -43,6 +43,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <None Remove="ClientApp\src\app\api-test\Services\LegosClient.ts" />
     <None Remove="ClientApp\src\app\Models\LegoResponse.ts" />
   </ItemGroup>
 
