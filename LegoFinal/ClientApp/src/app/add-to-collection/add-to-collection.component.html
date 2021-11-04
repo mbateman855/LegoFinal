@@ -1,0 +1,21 @@
+<h2>Add Lego Set to Collection</h2>
+
+<form>
+  <label>Lego Set Name: </label>
+  <input type="text" class="form-control" id="SetName" name="SetName" #SetName />
+
+  <label>Set Number:</label>
+  <input type="text" class="form-control" id="SetNumber" name="SetNumber" #SetNumber />
+
+  <label>Quantity:</label>
+  <input type="text" class="form-control" id="Quantity" name="Quantity" #Quantity />
+
+  <label>Set Id:</label>
+  <input type="text" class="form-control" id="SetId" name="SetId" #SetId />
+
+  <label>User Id:</label>
+  <input type="text" class="form-control" id="UserId" name="UserId" #UserId />
+
+
+  <button class="btn-primary btn-primary" (click)="addItemToCollection(SetName.value, SetNumber.value, Quantity.value, SetId.value, UserId.value)">Add Item</button>
+</form>

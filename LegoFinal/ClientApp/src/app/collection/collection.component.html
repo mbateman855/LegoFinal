@@ -1,0 +1,24 @@
+<h2>Your Lego Sets</h2>
+
+<p *ngIf="!collectionItems"><em>No Lego sets added yet...</em></p>
+
+<table class='table table-striped' aria-labelledby="tableLabel" *ngIf="collectionItems">
+  <thead>
+    <tr>
+      <th>Set Name</th>
+      <th>Collection Id</th>
+      <th>Quantity</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let collection of collectionItems">
+      <td>{{ collection.setName }}</td>
+      <td>{{ collection.collectionId }}</td>
+      <td>{{ collection.quantity }}</td>
+    </tr>
+  </tbody>
+</table>
+
+<div>
+  <button type="button" class="btn-primary btn-primary-outline pull-right" (click)="btnClick();"><i class="fa fa-plus"></i>Add to Collection</button>
+</div>

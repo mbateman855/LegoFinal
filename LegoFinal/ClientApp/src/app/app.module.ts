@@ -12,6 +12,10 @@ import { FetchDataComponent } from './fetch-data/fetch-data.component';
 import { ApiAuthorizationModule } from 'src/api-authorization/api-authorization.module';
 import { AuthorizeGuard } from 'src/api-authorization/authorize.guard';
 import { AuthorizeInterceptor } from 'src/api-authorization/authorize.interceptor';
+import { WishlistComponent } from './wishlist/wishlist.component';
+import { AddToWishlistComponent } from './add-to-wishlist/add-to-wishlist.component';
+import { CollectionComponent } from './collection/collection.component';
+import { AddToCollectionComponent } from './add-to-collection/add-to-collection.component';
 import { ApiTestComponent } from './api-test/api-test.component';
 //import { LegosClient } from './api-test/Services/LegosClient';
 
@@ -21,6 +25,11 @@ import { ApiTestComponent } from './api-test/api-test.component';
     NavMenuComponent,
     HomeComponent,
     CounterComponent,
+    FetchDataComponent,
+    WishlistComponent,
+    AddToWishlistComponent,
+    CollectionComponent,
+    AddToCollectionComponent
     FetchDataComponent,
     ApiTestComponent
   ],
@@ -33,6 +42,10 @@ import { ApiTestComponent } from './api-test/api-test.component';
       { path: '', component: HomeComponent, pathMatch: 'full' },
       { path: 'counter', component: CounterComponent },
       { path: 'fetch-data', component: FetchDataComponent, canActivate: [AuthorizeGuard] },
+      { path: 'wishlist', component: WishlistComponent },
+      { path: 'add-to-wishlist', component: AddToWishlistComponent },
+      { path: 'collection', component: CollectionComponent },
+      { path: 'add-to-collection', component: AddToCollectionComponent }
       { path: 'api-test', component: ApiTestComponent }
     ])
   ],
