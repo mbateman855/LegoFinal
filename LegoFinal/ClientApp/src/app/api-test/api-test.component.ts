@@ -15,7 +15,7 @@ export class ApiTestComponent implements OnInit {
   sets!: Results[];
 
   ngOnInit() {
-    this.testService.getResults().subscribe(result => { this.sets = result; })
+    this.testService.getResults().subscribe(result => { this.sets = result.results });
   }
 
 }
