@@ -29,7 +29,7 @@ import { ApiTestComponent } from './api-test/api-test.component';
     WishlistComponent,
     AddToWishlistComponent,
     CollectionComponent,
-    AddToCollectionComponent
+    AddToCollectionComponent,
     FetchDataComponent,
     ApiTestComponent
   ],
@@ -45,7 +45,7 @@ import { ApiTestComponent } from './api-test/api-test.component';
       { path: 'wishlist', component: WishlistComponent },
       { path: 'add-to-wishlist', component: AddToWishlistComponent },
       { path: 'collection', component: CollectionComponent },
-      { path: 'add-to-collection', component: AddToCollectionComponent }
+      { path: 'add-to-collection', component: AddToCollectionComponent },
       { path: 'api-test', component: ApiTestComponent }
     ])
   ],
