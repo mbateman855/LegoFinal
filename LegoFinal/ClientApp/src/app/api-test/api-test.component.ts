@@ -12,10 +12,13 @@ export class ApiTestComponent implements OnInit {
 
   constructor(private testService: TestService) { }
 
+  //legoResponse!: LegoResponse;
   sets!: Results[];
 
   ngOnInit() {
-    this.testService.getResults().subscribe(result => { this.sets = result; })
+    this.testService.getResults().subscribe(result => { this.sets = result.results });
+    //console.log(this.sets);
+   /* this.sets = this.legoResponse.results;*/
   }
 
 }

@@ -9,11 +9,11 @@ import { LegoResponse, Results } from './Models/LegoResponse';
 })
 export class TestService {
 
-  apiUrl: string = 'https://localhost:44334/api/legoresponse';
+  apiUrl: string = "https://localhost:44334/api/legoresponse";
   //apiUrl: string = 'https://rebrickable.com/api/v3/lego/sets/';
   //sets!: Results[];
 
-  constructor(private http: HttpClient/*, private legoClient: LegosClient*/) { }
+  constructor(private httpClient: HttpClient) { }
 
 
 
@@ -26,14 +26,15 @@ export class TestService {
     //  })
     //};
 
-    const httpOptions = {
-      headers: new HttpHeaders({
-        'Authorization': 'key b49eae0c7f448967c55f64c24fc12bd0'
-      })
-    };
+    //const httpOptions = {
+    //  headers: new HttpHeaders({
+    //    'Authorization': 'key b49eae0c7f448967c55f64c24fc12bd0'
+    //  })
+    //};
     //httpOptions.headers.append('Authorization', 'key b49eae0c7f448967c55f64c24fc12bd0');
 
-    return this.http.get<LegoResponse["results"]>(this/*.legoClient*/.apiUrl, httpOptions)
+    //return this.http.get<LegoResponse/*["results"]*/>(this/*.legoClient*/.apiUrl/*, httpOptions*/)
+    return this.httpClient.get<LegoResponse>(this.apiUrl);
   }
 }
 
