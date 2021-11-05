@@ -29,15 +29,11 @@ namespace LegoFinal
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            //services.AddTransient<ILegoClient, LegoClient>();
             services.AddHttpClient<ILegoClient, LegoClient>(options =>
             {
                 options.BaseAddress = new Uri("https://rebrickable.com/api/v3/");
                 options.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("key", "b49eae0c7f448967c55f64c24fc12bd0");
             });
-
-            //LegoClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("key", "=" + apiKey);
-
 
             services.AddDbContext<ApplicationDbContext>(options =>
                 options.UseSqlServer(
