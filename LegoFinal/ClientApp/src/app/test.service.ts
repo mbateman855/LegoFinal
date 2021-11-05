@@ -1,7 +1,6 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { LegosClient } from './api-test/Services/LegosClient';
 import { LegoResponse, Results } from './Models/LegoResponse';
 
 @Injectable({
