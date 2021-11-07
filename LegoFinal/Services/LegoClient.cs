@@ -24,7 +24,24 @@ namespace LegoFinal.Services
             var legoResponse = JsonSerializer.Deserialize<LegoResponse>(jsonResponse);
 
             return legoResponse;
-            
+        }
+
+        public async Task<PartsResponse> GetSetsPartsListAsync(int id)
+        {
+            var response = await _httpClient.GetAsync($"lego/sets/{id}/parts/");
+            var jsonResponse = await response.Content.ReadAsStringAsync();
+            var partsResponse = JsonSerializer.Deserialize<PartsResponse>(jsonResponse);
+
+            return partsResponse;
+        }
+
+        public async Task<PartsResponse> GetPartsAsync()
+        {
+            var response = await _httpClient.GetAsync("lego/parts/");
+            var jsonResponse = await response.Content.ReadAsStringAsync();
+            var partsResponse = JsonSerializer.Deserialize<PartsResponse>(jsonResponse);
+
+            return partsResponse;
         }
     }
 }

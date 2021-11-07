@@ -6,10 +6,8 @@ using System.Threading.Tasks;
 
 namespace LegoFinal.Services
 {
-    public interface ILegoClient
+    public interface IPartsClient
     {
-        Task<LegoResponse> GetLegosAsync();
-        Task<PartsResponse> GetSetsPartsListAsync(int id);
         Task<PartsResponse> GetPartsAsync();
     }
 }

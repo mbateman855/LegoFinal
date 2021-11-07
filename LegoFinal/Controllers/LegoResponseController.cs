@@ -23,7 +23,7 @@ namespace LegoFinal.Controllers
 
         // GET: api/<LegoResponseController>
         [HttpGet]
-        public async Task<LegoResponse> Get()
+        public async Task<LegoResponse> GetSets()
         {
             var legoResponse = await _legoClient.GetLegosAsync();
             //rename this method to be more specific
