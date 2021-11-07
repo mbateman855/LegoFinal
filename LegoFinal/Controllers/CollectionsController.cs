@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using LegoFinal.Models;
+using Microsoft.AspNetCore.Identity;
 
 namespace LegoFinal.Controllers
 {
@@ -15,9 +16,13 @@ namespace LegoFinal.Controllers
     {
         private readonly LegoContext _context;
 
-        public CollectionsController(LegoContext context)
+        private UserManager<ApplicationUser> _userManager;
+
+        public CollectionsController(LegoContext context, UserManager<ApplicationUser> userManager)
         {
             _context = context;
+
+            _userManager = userManager;
         }
 
         // GET: api/Collections
@@ -28,17 +33,18 @@ namespace LegoFinal.Controllers
         }
 
         // GET: api/Collections/5
-        [HttpGet("{id}")]
-        public async Task<ActionResult<Collection>> GetCollection(int id)
+        [HttpGet("{userName}")]
+        public ActionResult<Collection> GetCollection(string userName)
         {
-            var collection = await _context.Collections.FindAsync(id);
+            var user = _userManager.Users.FirstOrDefault(x => x.UserName == userName);
 
-            if (collection == null)
+            var collection = _context.Collections.Where(x => x.UserId == user.Id);
+
+            if (collection != null)
             {
-                return NotFound();
+                return Ok(collection.ToList());
             }
-
-            return collection;
+            return NotFound();
         }
 
         // PUT: api/Collections/5

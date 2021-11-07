@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { User, UserManager } from 'oidc-client';
+import { AuthorizeService } from '../../api-authorization/authorize.service';
 import { CollectionService } from '../collection.service';
 import { Collection } from '../Models/collection';
 
@@ -11,6 +13,7 @@ import { Collection } from '../Models/collection';
 export class CollectionComponent implements OnInit {
 
   collectionItems: Collection[]
+    
 
   constructor(private collectionService: CollectionService, private router: Router) { }
 
@@ -19,9 +22,25 @@ export class CollectionComponent implements OnInit {
       .subscribe(result => {
         this.collectionItems = result;
       })
+
+       
   }
+
+  onDelete(id: number) {
+    this.collectionService.deleteCollection(id)
+      .subscribe(reult => {
+        this.collectionService.getCollection();
+      })
+
+  }
+
+ 
   btnClick = function () {
     this.router.navigateByUrl('/add-to-collection')
   }
 
+ 
+
 }
+
+
