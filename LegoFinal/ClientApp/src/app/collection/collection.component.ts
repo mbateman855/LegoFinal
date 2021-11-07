@@ -28,8 +28,9 @@ export class CollectionComponent implements OnInit {
 
   onDelete(id: number) {
     this.collectionService.deleteCollection(id)
-      .subscribe(reult => {
+      .subscribe(result => {
         this.collectionService.getCollection();
+        this.router.navigateByUrl('/collection');
       })
 
   }

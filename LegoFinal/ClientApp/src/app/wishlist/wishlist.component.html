@@ -9,6 +9,7 @@
       <th>Set Name</th>
       <th>Set Id</th>
       <th>Quantity</th>
+      <th>WishList Id</th>
     </tr>
   </thead>
   <tbody>
@@ -16,6 +17,10 @@
       <td>{{ wishlist.setName }}</td>
       <td>{{ wishlist.setId }}</td>
       <td>{{ wishlist.quantity }}</td>
+      <td>{{ wishlist.wishListId }}</td>
+      <td>
+        <button type="button" class="btn-primary-outline pull-right" (click)="onDelete(wishlist.wishListId)">Delete</button>
+      </td>
     </tr>
   </tbody>
 </table>

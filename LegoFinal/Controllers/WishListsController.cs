@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using LegoFinal.Models;
+using Microsoft.AspNetCore.Identity;
 
 namespace LegoFinal.Controllers
 {
@@ -15,9 +16,13 @@ namespace LegoFinal.Controllers
     {
         private readonly LegoContext _context;
 
-        public WishListsController(LegoContext context)
+        private UserManager<ApplicationUser> _userManager;
+
+        public WishListsController(LegoContext context, UserManager<ApplicationUser> userManager)
         {
             _context = context;
+
+            _userManager = userManager;
         }
 
         // GET: api/WishLists
@@ -28,17 +33,20 @@ namespace LegoFinal.Controllers
         }
 
         // GET: api/WishLists/5
-        [HttpGet("{id}")]
-        public async Task<ActionResult<WishList>> GetWishList(int id)
+        [HttpGet("{userName}")]
+        public ActionResult<WishList> GetWishList(string userName)
         {
-            var wishList = await _context.WishLists.FindAsync(id);
+            var user = _userManager.Users.FirstOrDefault(x => x.UserName == userName);
 
-            if (wishList == null)
+            var wishList =  _context.WishLists.Where(x => x.UserId == user.Id);
+
+            if (wishList != null)
             {
-                return NotFound();
+                return Ok(wishList.ToList());
             }
 
-            return wishList;
+            return NotFound();
+            
         }
 
         // PUT: api/WishLists/5
