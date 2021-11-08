@@ -31,11 +31,14 @@ namespace LegoFinal
         {
             services.AddHttpClient<ILegoClient, LegoClient>(options =>
             {
-                options.BaseAddress = new Uri("https://rebrickable.com/api/v3/");
+            options.BaseAddress = new Uri("https://rebrickable.com/api/v3/");
                 options.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("key", "b49eae0c7f448967c55f64c24fc12bd0");
+                //options.DefaultRequestHeaders.Add("Authorization", "key b49eae0c7f448967c55f64c24fc12bd0");
+                //options.DefaultRequestHeaders.Add("Accept", "application/json");
+                
             });
-            
 
+            
             //services.AddHttpClient<IPartsClient, PartsClient>(options =>
             //{
             //    options.BaseAddress = new Uri("https://rebrickable.com/api/v3/");

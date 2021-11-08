@@ -9,7 +9,8 @@ namespace LegoFinal.Services
     public interface ILegoClient
     {
         Task<LegoResponse> GetLegosAsync();
-        Task<PartsResponse> GetSetsPartsListAsync(int id);
+        Task<Result> GetLegoDetails(string id);
         Task<PartsResponse> GetPartsAsync();
+        Task<PartsResponse> GetSetsPartsListAsync(string id);
     }
 }

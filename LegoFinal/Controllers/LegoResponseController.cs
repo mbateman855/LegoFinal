@@ -32,9 +32,12 @@ namespace LegoFinal.Controllers
 
         // GET api/<LegoResponseController>/5
         [HttpGet("{id}")]
-        public string Get(int id)
+        public async Task<Result> GetSetDetails(string id)
         {
-            return "value";
+            var legoDetails = await _legoClient.GetLegoDetails(id);
+            //var setId = legoDetails.results.All(legoDetails.results.set_num == id);
+
+            return legoDetails;
         }
 
     }

@@ -14,27 +14,34 @@ export class ApiTestComponent implements OnInit {
 
   constructor(private testService: TestService, private partsService: PartsService, private route: ActivatedRoute) { }
 
+  results!: LegoResponse;
   sets!: Results[];
   parts!: PartsResult[];
+  setDetails!: Results;
 
   ngOnInit() {
-  //  let setId;
-  //  this.testService.getSetResults().subscribe(result => { this.sets = result.results });
-  //  this.testService.getPartResults(id).subscribe(partResult => { this.parts = partResult.results });
-
     let setId;
-    this.route.paramMap
-      .subscribe(params => {
-        let id = Number(params.get('id'));
-        this.testService.getSetResults
-          .subscribe(result => {
-            this.favorites = result.filter(x => x.userId == id);
-            setId = result.forEach(y => y.eventId = setId);
-            this.eventService.getEvents().subscribe(result => {
-              this.events = result.filter(y => y.eventId == setId);
-            })
-          })
-      })
+    this.testService.getSetResults()
+      .subscribe(result => {
+        this.results = result;
+        this.sets = result.results;
+        setId = result.results.forEach(x => x.set_num = setId);
+      });
+    this.testService.getSetDetails(setId).subscribe(result => this.setDetails = result);
+    //this.testService.getPartResults(id).subscribe(partResult => { this.parts = partResult.results });
+
+    //let setId;
+    //this.route.paramMap
+    //  .subscribe(params => {
+    //    let id = Number(params.get('set_num'));
+    //    this.testService.getSetResults().subscribe(result => {
+    //        this.sets = result.results;
+    //        setId = result.results.forEach(y => y.set_num = setId);
+    //      this.partsService.getPartResults().subscribe(result => {
+    //        this.parts = result.results;
+    //        })
+    //      })
+    //  })
   }
 
 }

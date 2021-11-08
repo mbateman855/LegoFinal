@@ -1,6 +1,6 @@
 export class PartsResponse {
   count: number;
-  next: string;
+  next: object;
   previous: object;
   results: PartsResult[];
 

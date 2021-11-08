@@ -39,10 +39,10 @@ namespace LegoFinal.Controllers
 
         // GET api/<PartsResponseController>/5
         [HttpGet("{id}")]
-        public async Task<PartsResponse> GetParts(int id)
+        public async Task<PartsResponse> GetPartsInSet(string id)
         {
-            var partsResponse = await _legoClient.GetSetsPartsListAsync(id);
-            return partsResponse;
+            var partsResults = await _legoClient.GetSetsPartsListAsync(id);
+            return partsResults;
         }
 
         // POST api/<PartsResponseController>
