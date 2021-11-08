@@ -1,7 +1,13 @@
 <h1>Lego Set List</h1>
 
+<div class="container">
+  <router-outlet></router-outlet>
+</div>
+
+
 <ul *ngFor="let set of sets">
   <li>
     {{set.name}}
   </li>
 </ul>
+
