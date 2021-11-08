@@ -17,7 +17,7 @@ export class TestService {
     return this.httpClient.get<LegoResponse>(this.apiUrl);
   }
   getSetDetails(id: string) {
-    return this.httpClient.get<Results>(`${this.apiUrl}/${id}`);
+    return this.httpClient.get<Results>(this.apiUrl + id);
   }
   //getPartResults() {
   //  return this.httpClient.get<PartsResponse>(this.apiUrl + "/parts");

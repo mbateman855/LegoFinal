@@ -26,8 +26,9 @@
   <tbody>
     <tr *ngFor="let set of sets">
       <td>
-        <!--<a routerLink="set-details/{{set.set_num}}" routerLinkActive="active">{{set.name}}</a>-->
-        {{set.name}}
+          <a [routerLink]="['/set-details', set.set_num]" routerLinkActive="active">
+            {{set.name}}
+          </a>
       </td>
       <td>{{set.year}}</td>
       <td>{{set.num_parts}}
@@ -39,7 +40,7 @@
       </td>
       <td><img src="{{set.set_img_url}}"/></td>
       <!--<td>
-        <button class="btn-primary btn" onclick="displaySetDetails(set.set_num)">Set Details</button>
+        <button class="btn-primary btn" onclick="displaySetDetails(set)">Set Details</button>
       </td>-->
     </tr>
   </tbody>

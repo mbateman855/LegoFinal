@@ -53,7 +53,7 @@ import { SetDetailsComponent } from './set-details/set-details.component';
       { path: 'collection', component: CollectionComponent },
       { path: 'add-to-collection', component: AddToCollectionComponent },
       { path: 'api-test', component: ApiTestComponent },
-      { path: 'set-details', component: SetDetailsComponent },
+      { path: 'set-details/:set_num', component: SetDetailsComponent },
     ])
   ],
   providers: [

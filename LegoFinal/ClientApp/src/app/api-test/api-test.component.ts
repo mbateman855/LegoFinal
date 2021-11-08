@@ -46,9 +46,9 @@ export class ApiTestComponent implements OnInit {
     //}
   }
 
-  //displaySetDetails(setNum: string) {
-  //  this.router.navigate(['set-details', setNum]);
-  //}
+  displaySetDetails(setNum: string) {
+    this.router.navigate(['set-details', setNum]);
+  }
   //searchLegoResponse(userInput: string) {
   //  console.log(userInput);
   //}
