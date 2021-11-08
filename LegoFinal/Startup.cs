@@ -1,5 +1,6 @@
 using LegoFinal.Data;
 using LegoFinal.Models;
+using LegoFinal.Services;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -11,6 +12,8 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using System;
+using System.Net.Http.Headers;
 
 namespace LegoFinal
 {
@@ -26,6 +29,22 @@ namespace LegoFinal
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddHttpClient<ILegoClient, LegoClient>(options =>
+            {
+            options.BaseAddress = new Uri("https://rebrickable.com/api/v3/");
+                options.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("key", "b49eae0c7f448967c55f64c24fc12bd0");
+                //options.DefaultRequestHeaders.Add("Authorization", "key b49eae0c7f448967c55f64c24fc12bd0");
+                //options.DefaultRequestHeaders.Add("Accept", "application/json");
+                
+            });
+
+            
+            //services.AddHttpClient<IPartsClient, PartsClient>(options =>
+            //{
+            //    options.BaseAddress = new Uri("https://rebrickable.com/api/v3/");
+            //    options.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("key", "b49eae0c7f448967c55f64c24fc12bd0");
+            //});
+
             services.AddDbContext<ApplicationDbContext>(options =>
                 options.UseSqlServer(
                     Configuration.GetConnectionString("DefaultConnection")));
@@ -47,6 +66,21 @@ namespace LegoFinal
             {
                 configuration.RootPath = "ClientApp/dist";
             });
+
+            services.AddCors(options =>
+            {
+                options.AddPolicy("AllowOrigin",
+                    builder =>
+                    {
+                        builder.WithOrigins("http://localhost:5001")
+                        .AllowAnyHeader();
+                    });
+            });
+
+
+
+
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -72,7 +106,7 @@ namespace LegoFinal
             }
 
             app.UseRouting();
-
+            app.UseCors(options => options.AllowAnyOrigin());
             app.UseAuthentication();
             app.UseIdentityServer();
             app.UseAuthorization();
@@ -96,6 +130,8 @@ namespace LegoFinal
                     spa.UseAngularCliServer(npmScript: "start");
                 }
             });
+
+            
         }
     }
 }

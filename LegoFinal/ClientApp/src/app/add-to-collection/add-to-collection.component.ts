@@ -15,14 +15,14 @@ export class AddToCollectionComponent implements OnInit {
   ngOnInit() {
   }
 
-  addItemToCollection(setName: string, setNumber: string, quantity: number, setId: number, userId: string, collectionId: number) {
+  addItemToCollection(setName: string, setNumber: string, quantity: number, setId: number, userId: string) { 
     let collectionItem = new Collection();
     collectionItem.setName = setName;
     collectionItem.setNumber = setNumber;
     collectionItem.quantity = quantity;
     collectionItem.setId = setId;
     collectionItem.userId = userId;
-    collectionItem.collectionId = collectionId;
+ 
 
     this.collectionService.postItemToCollection(collectionItem)
       .subscribe(result => {

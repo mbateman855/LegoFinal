@@ -16,6 +16,12 @@ import { WishlistComponent } from './wishlist/wishlist.component';
 import { AddToWishlistComponent } from './add-to-wishlist/add-to-wishlist.component';
 import { CollectionComponent } from './collection/collection.component';
 import { AddToCollectionComponent } from './add-to-collection/add-to-collection.component';
+import { ApiTestComponent } from './api-test/api-test.component';
+import { SetDetailsComponent } from './set-details/set-details.component';
+
+
+
+//import { LegosClient } from './api-test/Services/LegosClient';
 
 @NgModule({
   declarations: [
@@ -27,13 +33,17 @@ import { AddToCollectionComponent } from './add-to-collection/add-to-collection.
     WishlistComponent,
     AddToWishlistComponent,
     CollectionComponent,
-    AddToCollectionComponent
+    AddToCollectionComponent,
+    FetchDataComponent,
+    ApiTestComponent,
+    SetDetailsComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
     HttpClientModule,
     FormsModule,
     ApiAuthorizationModule,
+ 
     RouterModule.forRoot([
       { path: '', component: HomeComponent, pathMatch: 'full' },
       { path: 'counter', component: CounterComponent },
@@ -41,12 +51,14 @@ import { AddToCollectionComponent } from './add-to-collection/add-to-collection.
       { path: 'wishlist', component: WishlistComponent },
       { path: 'add-to-wishlist', component: AddToWishlistComponent },
       { path: 'collection', component: CollectionComponent },
-      { path: 'add-to-collection', component: AddToCollectionComponent }
+      { path: 'add-to-collection', component: AddToCollectionComponent },
+      { path: 'api-test', component: ApiTestComponent },
+      { path: 'set-details/:set_num', component: SetDetailsComponent },
     ])
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: AuthorizeInterceptor, multi: true }
-  ],
+  ], 
   bootstrap: [AppComponent]
 })
 export class AppModule { }
