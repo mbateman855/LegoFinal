@@ -1,3 +1,4 @@
+
 <head>
   <style>
     div {
@@ -8,37 +9,43 @@
 
 <div style="font-size: 50px; padding: 40px; border: 5px solid red; margin: 10px;" class="container">
   <h1 style="text-align:center"> LegoMania -The World of Replacement Parts</h1>
- </div>
+</div>
 
 <h1 style="color: red; text-align:center">Greetings Lego Collectors and Enthusiast! </h1>
 <h3> Here on LegoMania you can store your collection and find the parts that the dog eat. </h3>
 <p style="text-align:center;"><img src="assets/legoeater.jpg" alt="dog shaming" class="center" style="width: 30%; height:30%;"></p>
 
+
+  <app-api-test></app-api-test>
+
+
 <!--//search bar-->
 <div style=" padding: 30px; border: 5px solid red; margin: 10px;" class="container">
-  <p style="text-align:center ;"><input class="form-control"  type="text" center="center" placeholder="Search.." /></p>
+  <p style="text-align:center ;"><input class="form-control" type="text" center="center" placeholder="Search.." /></p>
 
-<button (click)="searchLegoSets(userInput)">Submit </button>
+  <button (click)="searchLegoResponse(userInput)">Submit </button>
+  
+
 </div>
 
 <!--//pagination-->
 <head>
-      <meta name="viewport" content="width=device-width, initial-scale=1">
-      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
-      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-      <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 </head>
 
 <body>
-      <div style="padding:0px; border:5px solid red; margin:10px;" class="container">
-              <ul class="pagination pagination-lg">
-                <li><a href="#">1</a></li>
-                <li><a href="#">2</a></li>
-                <li><a href="#">3</a></li>
-                <li><a href="#">4</a></li>
-                <li><a href="#">5</a></li>
-              </ul>
-      </div>
+  <div style="padding:0px; border:5px solid red; margin:10px;" class="container">
+    <ul class="pagination pagination-lg">
+      <li><a href="api-test">1</a></li>
+      <li><a href="api-test">2</a></li>
+      <li><a href="api-test">3</a></li>
+      <li><a href="api-test">4</a></li>
+      <li><a href="api-test">5</a></li>
+    </ul>
+  </div>
 </body>
 
 
