@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { PartsResponse } from './Models/PartsResponse';
+import { PartsResponse, PartsResult } from './Models/PartsResponse';
 
 @Injectable({
   providedIn: 'root'
@@ -11,7 +11,7 @@ export class PartsService {
 
   constructor(private httpClient: HttpClient) { }
 
-  getPartResults() {
-    return this.httpClient.get<PartsResponse>(this.apiUrl);
+  getPartResults(id: string) {
+    return this.httpClient.get<PartsResult>(`${this.apiUrl}/${id}`);
   }
 }
