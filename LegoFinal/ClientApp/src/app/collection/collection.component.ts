@@ -31,7 +31,7 @@ export class CollectionComponent implements OnInit {
  
   };
   btnClick = function () {
-    this.router.navigateByUrl('/add-to-collection')
+    this.router.navigateByUrl('/add-to-collection') 
   }
 
 }
