@@ -17,7 +17,7 @@ export class CollectionService {
   constructor(private httpClient: HttpClient, private authorizeService: AuthorizeService) {
 
     this.authorizeService.getUser()
-      .subscribe(user => this.userName = user.name);
+      .subscribe(user => this.userName = user.name); 
   }
 
   getCollection(): Observable<Collection[]> {
