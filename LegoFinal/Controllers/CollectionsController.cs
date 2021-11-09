@@ -50,9 +50,9 @@ namespace LegoFinal.Controllers
                 return Ok(collection.ToList());
             }
             return NotFound();
-        }
+        
 
-            return Ok(collection.ToList());
+            //return Ok(collection.ToList());
         }
 
         // PUT: api/Collections/5
