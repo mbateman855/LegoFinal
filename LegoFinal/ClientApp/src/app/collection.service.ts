@@ -17,7 +17,7 @@ export class CollectionService {
   constructor(private httpClient: HttpClient, private authorizeService: AuthorizeService) {
 
     this.authorizeService.getUser()
-      .subscribe(user => this.userName = user.name);
+      .subscribe(user => this.userName = user.name); 
   }
 
   getCollection(): Observable<Collection[]> {
@@ -28,5 +28,13 @@ export class CollectionService {
     return this.httpClient.post<Collection>(this.apiUrl, collection);
 
   }
+
+  deleteCollection(id: number) {
+    return this.httpClient.delete(this.apiUrl + `/${id}`)
+  }
+
+   
+  
+
 
 }

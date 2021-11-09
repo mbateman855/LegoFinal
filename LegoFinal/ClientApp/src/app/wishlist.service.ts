@@ -25,4 +25,9 @@ export class WishlistService {
   postItemToWishList(wishList: WishList): Observable<WishList> {
     return this.httpClient.post<WishList>(this.apiUrl, wishList);
   }
+
+  deleteWishList(id: number) {
+    return this.httpClient.delete(this.apiUrl + `/${id}`)
+  }
+
 }

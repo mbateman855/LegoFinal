@@ -22,26 +22,27 @@ export class AddToCollectionComponent implements OnInit {
     collectionItem.quantity = quantity;
     collectionItem.setId = setId;
     collectionItem.userId = userId;
- 
+    collectionItem.collectionId = collectionId;
 
     this.collectionService.postItemToCollection(collectionItem)
-      .subscribe(result => {
-        this.router.navigateByUrl('/collections')
+  .subscribe(result => {
+    this.router.navigateByUrl('/collection')
+  }, (error: Response) => {
+      if (error.status === 404) {
+        console.log('Not found');
+        alert('Not found');
       }
-        , (error: Response) => {
-        if (error.status === 404) {
-          console.log('Not found');
-          alert('Not found');
-        }
 
-        if (error.status === 500) {
+      if (error.status === 500) {
 
-        }
-        console.log(error.json);
-      });
+      }
+      console.log(error.json);
+    });
+    
 
 
   }
 }
+
 
 

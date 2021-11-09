@@ -19,6 +19,16 @@ export class WishlistComponent implements OnInit {
         this.wishListItems = result;
       })
   }
+
+  onDelete(id: number) {
+    this.wishListService.deleteWishList(id)
+      .subscribe(result => {
+        this.wishListService.getWishList();
+        this.router.navigateByUrl('/wishlist');
+      })
+
+  }
+
   btnClick = function () {
     this.router.navigateByUrl('/add-to-wishlist')
   }

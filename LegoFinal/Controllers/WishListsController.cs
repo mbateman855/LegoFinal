@@ -41,7 +41,7 @@ namespace LegoFinal.Controllers
 
             var wishList = _context.WishLists.Where(x => x.UserId == user.Id);
 
-            if (wishList == null)
+            if (wishList != null)
             {
                 return NotFound();
             }
@@ -111,5 +111,7 @@ namespace LegoFinal.Controllers
         {
             return _context.WishLists.Any(e => e.WishListId == id);
         }
+
+        
     }
 }

@@ -45,10 +45,12 @@ namespace LegoFinal.Controllers
 
             var collection =   _context.Collections.Where(x => x.UserId == user.Id);
 
-            if (collection == null)
+            if (collection != null)
             {
-                return NotFound();
+                return Ok(collection.ToList());
             }
+            return NotFound();
+        }
 
             return Ok(collection.ToList());
         }

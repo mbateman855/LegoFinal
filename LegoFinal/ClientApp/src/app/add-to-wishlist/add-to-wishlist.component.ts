@@ -16,7 +16,7 @@ export class AddToWishlistComponent implements OnInit {
   ngOnInit() {
   }
 
-  addItemToWishList(setName: string, setNumber: number, numberOfPieces: number, quantity: number, setId: number, userId: number) {
+  addItemToWishList(setName: string, setNumber: number, numberOfPieces: number, quantity: number, setId: number, userId: string) {
     let wishListItem = new WishList();
     wishListItem.setName = setName;
     wishListItem.setNumber = setNumber;
@@ -27,7 +27,7 @@ export class AddToWishlistComponent implements OnInit {
 
     this.wishListService.postItemToWishList(wishListItem)
       .subscribe(result => {
-        this.router.navigateByUrl('/wishlists')
+        this.router.navigateByUrl('/wishlist')
       }, (error: Response) => {
         if (error.status === 404) {
           console.log('Not found');

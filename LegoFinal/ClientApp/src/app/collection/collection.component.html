@@ -15,6 +15,10 @@
       <td>{{ collection.setName }}</td>
       <td>{{ collection.collectionId }}</td>
       <td>{{ collection.quantity }}</td>
+      <td>
+        <button type="button" class="btn-primary-outline pull-right" (click)="onDelete(collection.collectionId)">Delete</button>
+      </td>
+
     </tr>
   </tbody>
 </table>
