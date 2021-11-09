@@ -9,13 +9,13 @@ import { WishList } from './Models/wish-list';
 })
 export class WishlistService {
   apiUrl: string = "https://localhost:5001/api/WishLists";
+
   userName: string;
 
   constructor(private httpClient: HttpClient, private authorizeService: AuthorizeService) {
 
     this.authorizeService.getUser()
-      .subscribe(user => this.userName = user.name)
-
+      .subscribe(user => this.userName = user.name);
   }
 
   getWishList(): Observable<WishList[]> {

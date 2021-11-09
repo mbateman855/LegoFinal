@@ -16,7 +16,7 @@ namespace LegoFinal.Controllers
     {
         private readonly LegoContext _context;
 
-        private UserManager<ApplicationUser> _userManager;
+        private readonly UserManager<ApplicationUser> _userManager;
 
         public WishListsController(LegoContext context, UserManager<ApplicationUser> userManager)
         {
@@ -36,17 +36,17 @@ namespace LegoFinal.Controllers
         [HttpGet("{userName}")]
         public ActionResult<WishList> GetWishList(string userName)
         {
-            var user = _userManager.Users.FirstOrDefault(x => x.UserName == userName);
 
-            var wishList =  _context.WishLists.Where(x => x.UserId == user.Id);
+            var user = _userManager.Users.First(x => x.UserName == userName);
+
+            var wishList = _context.WishLists.Where(x => x.UserId == user.Id);
 
             if (wishList != null)
             {
-                return Ok(wishList.ToList());
+                return NotFound();
             }
 
-            return NotFound();
-            
+            return Ok(wishList.ToList());
         }
 
         // PUT: api/WishLists/5

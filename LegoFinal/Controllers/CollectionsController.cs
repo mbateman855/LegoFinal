@@ -6,17 +6,21 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using LegoFinal.Models;
+using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Identity;
+
 
 namespace LegoFinal.Controllers
 {
+    [EnableCors("AllowOrigin")]
     [Route("api/[controller]")]
     [ApiController]
     public class CollectionsController : ControllerBase
     {
         private readonly LegoContext _context;
 
-        private UserManager<ApplicationUser> _userManager;
+        private readonly UserManager<ApplicationUser> _userManager;
+
 
         public CollectionsController(LegoContext context, UserManager<ApplicationUser> userManager)
         {
@@ -34,17 +38,21 @@ namespace LegoFinal.Controllers
 
         // GET: api/Collections/5
         [HttpGet("{userName}")]
-        public ActionResult<Collection> GetCollection(string userName)
+        public  ActionResult<Collection> GetCollection(string userName)
         {
-            var user = _userManager.Users.FirstOrDefault(x => x.UserName == userName);
 
-            var collection = _context.Collections.Where(x => x.UserId == user.Id);
+            var user =  _userManager.Users.First(x => x.UserName == userName);
+
+            var collection =   _context.Collections.Where(x => x.UserId == user.Id);
 
             if (collection != null)
             {
                 return Ok(collection.ToList());
             }
             return NotFound();
+        }
+
+            return Ok(collection.ToList());
         }
 
         // PUT: api/Collections/5
