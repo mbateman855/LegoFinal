@@ -22,7 +22,7 @@ export class AddToCollectionComponent implements OnInit {
     collectionItem.quantity = quantity;
     collectionItem.setId = setId;
     collectionItem.userId = userId;
-    collectionItem.collectionId = collectionId;
+    //collectionItem.collectionId = collectionId;
 
     this.collectionService.postItemToCollection(collectionItem)
   .subscribe(result => {

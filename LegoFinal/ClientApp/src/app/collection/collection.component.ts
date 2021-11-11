@@ -3,9 +3,9 @@ import { Router } from '@angular/router';
 import { User, UserManager } from 'oidc-client';
 import { AuthorizeService } from '../../api-authorization/authorize.service';
 import { CollectionService } from '../collection.service';
-import { AuthorizeService } from '../../api-authorization/authorize.service'
+//import { AuthorizeService } from '../../api-authorization/authorize.service'
 import { Collection } from '../Models/collection';
-import { User } from 'oidc-client';
+//import { User } from 'oidc-client';
 
 
 @Component({
