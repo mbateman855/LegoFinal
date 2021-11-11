@@ -43,10 +43,11 @@ namespace LegoFinal.Controllers
 
             if (wishList != null)
             {
-                return NotFound();
+                return Ok(wishList.ToList());
+
             }
 
-            return Ok(wishList.ToList());
+            return NotFound();
         }
 
         // PUT: api/WishLists/5
@@ -111,7 +112,11 @@ namespace LegoFinal.Controllers
         {
             return _context.WishLists.Any(e => e.WishListId == id);
         }
-
-        
     }
 }
+
+
+
+    
+
+
