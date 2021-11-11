@@ -17,6 +17,7 @@ import { AddToWishlistComponent } from './add-to-wishlist/add-to-wishlist.compon
 import { CollectionComponent } from './collection/collection.component';
 import { AddToCollectionComponent } from './add-to-collection/add-to-collection.component';
 import { ApiTestComponent } from './api-test/api-test.component';
+import { SetDetailsComponent } from './set-details/set-details.component';
 
 
 
@@ -34,7 +35,8 @@ import { ApiTestComponent } from './api-test/api-test.component';
     CollectionComponent,
     AddToCollectionComponent,
     FetchDataComponent,
-    ApiTestComponent
+    ApiTestComponent,
+    SetDetailsComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
@@ -50,7 +52,8 @@ import { ApiTestComponent } from './api-test/api-test.component';
       { path: 'add-to-wishlist', component: AddToWishlistComponent },
       { path: 'collection', component: CollectionComponent },
       { path: 'add-to-collection', component: AddToCollectionComponent },
-      { path: 'api-test', component: ApiTestComponent }
+      { path: 'api-test', component: ApiTestComponent },
+      { path: 'set-details/:set_num', component: SetDetailsComponent },
     ])
   ],
   providers: [

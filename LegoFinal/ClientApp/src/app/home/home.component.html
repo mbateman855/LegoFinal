@@ -15,21 +15,22 @@
 <h3> Here on LegoMania you can store your collection and find the parts that the dog eat. </h3>
 <p style="text-align:center;"><img src="assets/legoeater.jpg" alt="dog shaming" class="center" style="width: 30%; height:30%;"></p>
 
-<app-api-test></app-api-test>
+
+  <!--<app-api-test><app-api-test>-->
 
 
 <!--//search bar-->
+<form >
 
 <div style=" padding: 30px; border: 5px solid red; margin: 10px;" class="container">
-  <div class="search">
-    <form action="userInput" method="GET">
-      <input type="text" name="search" size="50" class="search" >
-      <input type="submit" value="Search" />
+  <p style="text-align:center ;">
+      <input class="form-control" type="text" center="center" id="SearchBar" name="SearchBar" placeholder="Search.." #SearchBar />
+</p>
 
-      <!--<button (click)="searchLegoSets(userInput)">Submit </button>-->
-    </form>
-  </div>
+  <!--<button onclick="searchLegoResponse(userInput)">Submit </button>-->
+  <button type="button" class="btn-primary btn-primary-outline pull-right" (click)="searchLegoResponse(SearchBar.value);">Search</button>
 </div>
+</form>
 
 <!--//pagination-->
 <head>

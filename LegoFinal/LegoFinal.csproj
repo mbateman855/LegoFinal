@@ -45,6 +45,7 @@
 
   <ItemGroup>
     <None Remove="ClientApp\src\app\Models\LegoResponse.ts" />
+    <None Remove="ClientApp\src\app\Models\PartsResponse.ts" />
   </ItemGroup>
 
   <ItemGroup>

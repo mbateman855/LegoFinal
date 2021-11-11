@@ -1,13 +1,47 @@
 <h1>Lego Set List</h1>
 
-<div class="container">
-  <router-outlet></router-outlet>
-</div>
-
-
-<ul *ngFor="let set of sets">
+<!--<ul *ngFor="let set of sets">
   <li>
     {{set.name}}
   </li>
-</ul>
+</ul>-->
 
+<table>
+  <thead>
+    <tr>
+      <td>
+        Set Name
+      </td>
+      <td>
+        Year Released
+      </td>
+      <td>
+        Number of Parts
+      </td>
+      <td>
+        Image
+      </td>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let set of sets">
+      <td>
+          <a [routerLink]="['/set-details', set.set_num]" routerLinkActive="active">
+            {{set.name}}
+          </a>
+      </td>
+      <td>{{set.year}}</td>
+      <td>{{set.num_parts}}
+      <details>
+        <ul *ngFor="let part of parts">
+          <li>{{part.id}}</li>
+         </ul>
+        </details>
+      </td>
+      <td><img src="{{set.set_img_url}}"/></td>
+      <!--<td>
+        <button class="btn-primary btn" onclick="displaySetDetails(set)">Set Details</button>
+      </td>-->
+    </tr>
+  </tbody>
+</table>

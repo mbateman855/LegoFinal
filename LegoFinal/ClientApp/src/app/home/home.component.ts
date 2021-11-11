@@ -10,13 +10,13 @@ export class HomeComponent {
 
   setName!: string;
   result: string;
+  userInput: string;
 
-  searchLegoResponse(userInput: string) {
+  searchLegoResponse(userInput) {
     //this is where you do the filtering
     //this.result = sets.filter( x= > x == userInput)
-    console.log("userInput");
+    //console.log(userInput);
   }
-
 }
 
 
