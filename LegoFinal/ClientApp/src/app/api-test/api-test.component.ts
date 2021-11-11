@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Inject, OnInit } from '@angular/core';
 import { ActivatedRoute, Router, ParamMap } from '@angular/router';
 import { LegoResponse, Results } from '../Models/LegoResponse';
 import { PartsResult } from '../Models/PartsResponse';
@@ -12,7 +12,11 @@ import { TestService } from '../test.service';
 })
 export class ApiTestComponent implements OnInit {
 
-  constructor(private testService: TestService, private partsService: PartsService, private route: ActivatedRoute, private router: Router) { }
+  baseUrl: string;
+  constructor(private testService: TestService, private partsService: PartsService, private route: ActivatedRoute, private router: Router, @Inject('BASE_URL') baseUrl: string)
+  {
+    this.baseUrl = baseUrl;
+  }
 
   results!: LegoResponse;
   sets!: Results[];
@@ -21,13 +25,13 @@ export class ApiTestComponent implements OnInit {
 
   ngOnInit() {
     const setId = this.route.snapshot.paramMap.get('set_num');
-    this.testService.getSetResults()
+    this.testService.getSetResults(this.baseUrl)
       .subscribe(result => {
         this.results = result;
         this.sets = result.results;
         //setId = result.results.forEach(x => x.set_num = setId);
       });
-    this.testService.getSetDetails(setId).subscribe(result => this.setDetails = result);
+    this.testService.getSetDetails(setId, this.baseUrl).subscribe(result => this.setDetails = result);
     //this.partsService.getPartResults(setId).subscribe(result => this.parts = result);
     //this.testService.getPartResults(id).subscribe(partResult => { this.parts = partResult.results });
 

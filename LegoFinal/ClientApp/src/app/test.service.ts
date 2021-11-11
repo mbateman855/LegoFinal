@@ -1,6 +1,7 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Injectable } from '@angular/core';
+import { Inject, Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import { getBaseUrl } from '../main';
 import { LegoResponse, Results } from './Models/LegoResponse';
 import { PartsResponse } from './Models/PartsResponse';
 
@@ -9,15 +10,16 @@ import { PartsResponse } from './Models/PartsResponse';
 })
 export class TestService {
 
-  apiUrl: string = "https://localhost:44334/api/legoresponse/";
+  
+  //apiUrl: string = "https://localhost:44334/api/legoresponse/";
 
   constructor(private httpClient: HttpClient) { }
 
-  getSetResults() {
-    return this.httpClient.get<LegoResponse>(this.apiUrl);
+  getSetResults(baseUrl: string) {
+    return this.httpClient.get<LegoResponse>(baseUrl + "api/legoresponse/");
   }
-  getSetDetails(id: string) {
-    return this.httpClient.get<Results>(this.apiUrl + id);
+  getSetDetails(id: string, baseUrl: string) {
+    return this.httpClient.get<Results>(baseUrl + "api/legoresponse/" + id);
   }
   //getPartResults() {
   //  return this.httpClient.get<PartsResponse>(this.apiUrl + "/parts");
