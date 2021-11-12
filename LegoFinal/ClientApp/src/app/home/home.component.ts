@@ -16,7 +16,7 @@ export class HomeComponent {
   userInput: string;
   baseUrl: string;
 
-  constructor(private testService: TestService,  private route: ActivatedRoute, private router: Router, @Inject('BASE_URL') baseUrl:string)  { }
+  constructor(private testService: TestService, private route: ActivatedRoute, private router: Router, @Inject('BASE_URL') baseUrl: string) { this.baseUrl = baseUrl;}
 
   results!: LegoResponse;
   sets!: Results[];
