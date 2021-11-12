@@ -27,7 +27,7 @@ export class AddToWishlistComponent implements OnInit {
 
     this.wishListService.postItemToWishList(wishListItem)
       .subscribe(result => {
-        this.router.navigateByUrl('/wishlists')
+        this.router.navigateByUrl('/wishlist')
       }, (error: Response) => {
         if (error.status === 404) {
           console.log('Not found');

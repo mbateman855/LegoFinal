@@ -8,7 +8,7 @@ import { WishList } from './Models/wish-list';
   providedIn: 'root'
 })
 export class WishlistService {
-  apiUrl: string = "https://localhost:5001/api/WishLists";
+  apiUrl: string = "https://localhost:44334/api/WishLists";
 
   userName: string;
 
@@ -23,6 +23,7 @@ export class WishlistService {
   }
 
   postItemToWishList(wishList: WishList): Observable<WishList> {
+    console.log(wishList);
     return this.httpClient.post<WishList>(this.apiUrl, wishList);
   }
 }

@@ -26,7 +26,7 @@ export class AddToCollectionComponent implements OnInit {
 
     this.collectionService.postItemToCollection(collectionItem)
       .subscribe(result => {
-        this.router.navigateByUrl('/collections')
+        this.router.navigateByUrl('/collection')
       }
         , (error: Response) => {
         if (error.status === 404) {
