@@ -1,7 +1,7 @@
 export class WishList {
   wishListId: number;
   setId: number;
-  userId: string;
+  userName: string;
   setName: string;
   setNumber: number;
   numberOfPieces: number;

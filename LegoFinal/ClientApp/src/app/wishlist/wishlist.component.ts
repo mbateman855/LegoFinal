@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { WishList } from '../Models/wish-list';
 import { WishlistService } from '../wishlist.service';
 
+
 @Component({
   selector: 'app-wishlist',
   templateUrl: './wishlist.component.html',

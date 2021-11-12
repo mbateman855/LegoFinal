@@ -89,8 +89,13 @@ namespace LegoFinal.Controllers
         // POST: api/Collections
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPost]
-        public async Task<ActionResult<Collection>> PostCollection(Collection collection)
+        public async Task<ActionResult<Collection>> PostCollection(CollectionwithUserName collection)
         {
+
+          var user = _userManager.Users.First(x => x.UserName == collection.UserName);
+
+            collection.UserId = user.Id;
+
             _context.Collections.Add(collection);
             await _context.SaveChangesAsync();
 

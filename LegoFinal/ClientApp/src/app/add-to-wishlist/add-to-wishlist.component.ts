@@ -16,14 +16,14 @@ export class AddToWishlistComponent implements OnInit {
   ngOnInit() {
   }
 
-  addItemToWishList(setName: string, setNumber: number, numberOfPieces: number, quantity: number, setId: number, userId: string) {
+  addItemToWishList(setName: string, setNumber: number, numberOfPieces: number, quantity: number, setId: number) {
     let wishListItem = new WishList();
     wishListItem.setName = setName;
     wishListItem.setNumber = setNumber;
     wishListItem.numberOfPieces = numberOfPieces;
     wishListItem.quantity = quantity;
     wishListItem.setId = setId;
-    wishListItem.userId = userId;
+    //wishListItem.userId = userId;
 
     this.wishListService.postItemToWishList(wishListItem)
       .subscribe(result => {

@@ -38,12 +38,17 @@ namespace LegoFinal
                 
             });
 
-            
+
             //services.AddHttpClient<IPartsClient, PartsClient>(options =>
             //{
             //    options.BaseAddress = new Uri("https://rebrickable.com/api/v3/");
             //    options.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("key", "b49eae0c7f448967c55f64c24fc12bd0");
             //});
+
+            services.AddDbContext<LegoContext>(options =>
+               options.UseSqlServer(
+                   Configuration.GetConnectionString("DefaultConnection")));
+
 
             services.AddDbContext<ApplicationDbContext>(options =>
                 options.UseSqlServer(
