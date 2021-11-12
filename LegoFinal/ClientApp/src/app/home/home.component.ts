@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Inject } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { LegoResponse, Results } from '../Models/LegoResponse';
 import { TestService } from '../test.service';
@@ -14,8 +14,9 @@ export class HomeComponent {
   setName!: string;
   result: string;
   userInput: string;
+  baseUrl: string;
 
-  constructor(private testService: TestService,  private route: ActivatedRoute, private router: Router) { }
+  constructor(private testService: TestService,  private route: ActivatedRoute, private router: Router, @Inject('BASE_URL') baseUrl:string)  { }
 
   results!: LegoResponse;
   sets!: Results[];
@@ -23,7 +24,7 @@ export class HomeComponent {
 
 
   ngOnInit() {
-    this.testService.getSetResults()
+    this.testService.getSetResults(this.baseUrl)
       .subscribe(result => {
         this.results = result;
         this.sets = result.results;
