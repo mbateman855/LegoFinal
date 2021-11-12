@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Inject, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { CollectionService } from '../collection.service';
 import { WishList } from '../Models/wish-list';
@@ -11,7 +11,12 @@ import { WishlistService } from '../wishlist.service';
 })
 export class AddToWishlistComponent implements OnInit {
 
-  constructor(private wishListService: WishlistService, private router: Router) { }
+  baseUrl: string;
+
+  constructor(private wishListService: WishlistService, private router: Router, @Inject('BASE_URL') baseUrl: string)
+  {
+    this.baseUrl = baseUrl;
+  }
 
   ngOnInit() {
   }
@@ -25,7 +30,7 @@ export class AddToWishlistComponent implements OnInit {
     wishListItem.setId = setId;
     //wishListItem.userId = userId;
 
-    this.wishListService.postItemToWishList(wishListItem)
+    this.wishListService.postItemToWishList(this.baseUrl, wishListItem)
       .subscribe(result => {
         this.router.navigateByUrl('/wishlist')
       }, (error: Response) => {

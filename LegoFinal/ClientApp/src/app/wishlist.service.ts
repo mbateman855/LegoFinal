@@ -8,7 +8,7 @@ import { WishList } from './Models/wish-list';
   providedIn: 'root'
 })
 export class WishlistService {
-  apiUrl: string = "https://localhost:5001/api/WishLists";
+  //apiUrl: string = "https://localhost:5001/api/WishLists";
 
   userName: string;
 
@@ -18,18 +18,21 @@ export class WishlistService {
       .subscribe(user => this.userName = user.name);
   }
 
-  getWishList(): Observable<WishList[]> {
-    return this.httpClient.get<WishList[]>(this.apiUrl + `/${this.userName}`);
+  getWishList(baseUrl: string): Observable<WishList[]> {
+    //return this.httpClient.get<WishList[]>(this.apiUrl + `/${this.userName}`);
+    return this.httpClient.get<WishList[]>(baseUrl + "api/WishLists/" + this.userName);
   }
 
-  postItemToWishList(wishList: WishList): Observable<WishList> {
+  postItemToWishList(baseUrl: string, wishList: WishList): Observable<WishList> {
 
     wishList.userName = this.userName
-    return this.httpClient.post<WishList>(this.apiUrl, wishList);
+    //return this.httpClient.post<WishList>(this.apiUrl, wishList);
+    return this.httpClient.post<WishList>(baseUrl + "api/WishLists/", wishList);
   }
 
-  deleteWishList(id: number) {
-    return this.httpClient.delete(this.apiUrl + `/${id}`)
+  deleteWishList(baseUrl: string, id: number) {
+    //return this.httpClient.delete(this.apiUrl + `/${id}`)
+    return this.httpClient.delete(baseUrl + "api/WishLists/" + id)
   }
 
 }

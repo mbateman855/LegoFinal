@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Inject, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { CollectionService } from '../collection.service';
 import { Collection } from '../Models/collection';
@@ -10,7 +10,12 @@ import { Collection } from '../Models/collection';
 })
 export class AddToCollectionComponent implements OnInit {
 
-  constructor(private collectionService: CollectionService, private router: Router) { }
+  baseUrl: string;
+
+  constructor(private collectionService: CollectionService, private router: Router, @Inject('BASE_URL') baseUrl: string)
+  {
+    this.baseUrl = baseUrl;
+  }
 
   ngOnInit() {
   }
@@ -24,7 +29,7 @@ export class AddToCollectionComponent implements OnInit {
     //collectionItem.userId = userId;
    // collectionItem.collectionId = collectionId;
 
-    this.collectionService.postItemToCollection(collectionItem)
+    this.collectionService.postItemToCollection(this.baseUrl, collectionItem)
   .subscribe(result => {
     this.router.navigateByUrl('/collection')
   }, (error: Response) => {

@@ -10,29 +10,34 @@ import { Collection } from './Models/collection';
   providedIn: 'root'
 })
 export class CollectionService {
-  apiUrl: string = "https://localhost:5001/api/Collections";
+  //apiUrl: string = "https://localhost:5001/api/Collections";
 
   userName: string;
 
-  constructor(private httpClient: HttpClient, private authorizeService: AuthorizeService) {
+
+  constructor(private httpClient: HttpClient, private authorizeService: AuthorizeService ) {
 
     this.authorizeService.getUser()
-      .subscribe(user => this.userName = user.name); 
+      .subscribe(user => this.userName = user.name);
+
   }
 
-  getCollection(): Observable<Collection[]> {
-    return this.httpClient.get<Collection[]>(this.apiUrl + `/${this.userName}`)
+  getCollection(baseUrl: string): Observable<Collection[]> {
+    //return this.httpClient.get<Collection[]>(this.apiUrl + `/${this.userName}`)
+    return this.httpClient.get<Collection[]>(baseUrl + "api/Collections/" + this.userName)
   }
 
-  postItemToCollection(collection: Collection): Observable<Collection> {
+  postItemToCollection(baseUrl: string, collection: Collection): Observable<Collection> {
 
     collection.userName = this.userName;
-    return this.httpClient.post<Collection>(this.apiUrl, collection);
+    //return this.httpClient.post<Collection>(this.apiUrl, collection);
+    return this.httpClient.post<Collection>(baseUrl + "api/Collections/", collection);
 
   }
 
-  deleteCollection(id: number) {
-    return this.httpClient.delete(this.apiUrl + `/${id}`)
+  deleteCollection(baseUrl: string, id: number) {
+    //return this.httpClient.delete(this.apiUrl + `/${id}`)
+    return this.httpClient.delete(baseUrl + "api/Collections/" + id)
   }
 
    
