@@ -12,8 +12,8 @@
 </div>
 
 <h1 style="color: red; text-align:center">Greetings Lego Collectors and Enthusiast! </h1>
-<h3 style="text-align:center"> Here on LegoMania you can store your collection and find the parts the dog eat. </h3>
-<p style="text-align:center;"><img src="assets/BronLegoEater.jpg" alt="dog shaming" class="center" style="width: 30%; height:30%;"></p>
+<h3 style="text-align:center" > Here on LegoMania you can store your collection and find the parts the dog eat. </h3>
+<p style="text-align:center;"><img src="assets/BronLegoEater.jpg" alt="dog shaming" class="center" style="width: 20%; height:20%;"></p>
 
 
   <!--<app-api-test><app-api-test>-->
@@ -35,10 +35,11 @@
 <div *ngFor="let set of filteredSets">
   <ul>
     <li style="text-align:center">
-      <button  [routerLink]="['/set-details',set.set_num]" routerLinkActive="active" onclick="set.set_url(set.set_url)">
+      <button [routerLink]="['/set-details',set.set_num]" routerLinkActive="active" onclick="set.set_url(set.set_url)">
         {{set.name}}
       </button>
-        <a [routerLink]="['/set-details',set.set_num]" routerLinkActive="active"></a>
+      <!--<button onclick="add-To-WishLists(set.set_name)">Add To Wishlist</button>
+        <a [routerLink]="['/set-details',set.set_num]" routerLinkActive="active"></a>-->
      
     </li>
   </ul>
