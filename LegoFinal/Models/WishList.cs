@@ -18,4 +18,9 @@ namespace LegoFinal.Models
         public virtual LegoSet Set { get; set; }
         public virtual AspNetUser User { get; set; }
     }
+
+    public partial class WishListwithUserName : WishList
+    { 
+        public string userName {get; set; }
+    }
 }

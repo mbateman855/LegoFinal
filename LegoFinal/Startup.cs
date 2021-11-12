@@ -46,8 +46,9 @@ namespace LegoFinal
             //});
 
             services.AddDbContext<LegoContext>(options =>
-                options.UseSqlServer(
-                    Configuration.GetConnectionString("DefaultConnection")));
+               options.UseSqlServer(
+                   Configuration.GetConnectionString("DefaultConnection")));
+
 
             services.AddDbContext<ApplicationDbContext>(options =>
                 options.UseSqlServer(
