@@ -23,6 +23,8 @@ export class WishlistService {
   }
 
   postItemToWishList(wishList: WishList): Observable<WishList> {
+
+    wishList.userName = this.userName
     return this.httpClient.post<WishList>(this.apiUrl, wishList);
   }
 

@@ -43,10 +43,11 @@ namespace LegoFinal.Controllers
 
             if (wishList != null)
             {
-                return NotFound();
+                return Ok(wishList.ToList());
             }
 
-            return Ok(wishList.ToList());
+            return NotFound();
+
         }
 
         // PUT: api/WishLists/5
@@ -83,8 +84,12 @@ namespace LegoFinal.Controllers
         // POST: api/WishLists
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPost]
-        public async Task<ActionResult<WishList>> PostWishList(WishList wishList)
+        public async Task<ActionResult<WishList>> PostWishList(WishListwithUserName wishList)
         {
+            var user = _userManager.Users.First(x => x.UserName == wishList.userName);
+
+                wishList.UserId = user.Id;
+
             _context.WishLists.Add(wishList);
             await _context.SaveChangesAsync();
 

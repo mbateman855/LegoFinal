@@ -1,7 +1,7 @@
 export class Collection {
   collectionId: number;
   setId: number;
-  userId: string;
+  userName: string;
   setName: string;
   setNumber: string;
   quantity: number;

@@ -25,6 +25,8 @@ export class CollectionService {
   }
 
   postItemToCollection(collection: Collection): Observable<Collection> {
+
+    collection.userName = this.userName;
     return this.httpClient.post<Collection>(this.apiUrl, collection);
 
   }

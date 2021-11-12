@@ -17,4 +17,9 @@ namespace LegoFinal.Models
         public virtual LegoSet Set { get; set; }
         public virtual AspNetUser User { get; set; }
     }
+    public partial class CollectionwithUserName : Collection
+    {
+        public string UserName { get; set; }
+
+    }
 }
