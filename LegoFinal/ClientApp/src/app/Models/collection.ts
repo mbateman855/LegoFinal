@@ -2,7 +2,7 @@ export class Collection {
   collectionId: number;
   setId: number;
   userName: string;
-  setName: string;
-  setNumber: string;
+  name: string;
+  set_num: string;
   quantity: number;
 }
