@@ -34,19 +34,20 @@ namespace LegoFinal.Controllers
 
         // GET: api/WishLists/5
         [HttpGet("{userName}")]
-        public ActionResult<WishList> GetWishList(string userName)
+        public async Task<ActionResult<IEnumerable<WishList>>> GetWishList(string userName)
         {
 
-            var user = _userManager.Users.First(x => x.UserName == userName);
+            var user = _userManager.Users.FirstOrDefault(x => x.UserName == userName);
 
             var wishList = _context.WishLists.Where(x => x.UserId == user.Id);
 
-            if (wishList != null)
+            if (wishList == null)
             {
-                return Ok(wishList.ToList());
+                return NotFound();
+                
             }
+            return await wishList.ToListAsync();
 
-            return NotFound();
 
         }
 
