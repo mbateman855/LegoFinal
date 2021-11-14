@@ -38,26 +38,31 @@ namespace LegoFinal.Controllers
 
         // GET: api/Collections/5
         [HttpGet("{userName}")]
-        public  ActionResult<Collection> GetCollection(string userName)
+        public async Task<ActionResult<IEnumerable<Collection>>> GetCollection(string userName)
         {
 
-            var user =  _userManager.Users.First(x => x.UserName == userName);
+            var user = _userManager.Users.FirstOrDefault(x => x.UserName == userName);
 
-            var collection =   _context.Collections.Where(x => x.UserId == user.Id);
+            var collection = _context.Collections.Where(x => x.UserId == user.Id);
 
-            if (collection != null)
+            if (collection == null)
             {
-                return Ok(collection.ToList());
+                return NotFound();
+
+
             }
-            return NotFound();
-        
+            return await collection.ToListAsync();
+
+
 
             //return Ok(collection.ToList());
         }
 
-        // PUT: api/Collections/5
-        // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
-        [HttpPut("{id}")]
+
+
+    // PUT: api/Collections/5
+    // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
+    [HttpPut("{id}")]
         public async Task<IActionResult> PutCollection(int id, Collection collection)
         {
             if (id != collection.CollectionId)
