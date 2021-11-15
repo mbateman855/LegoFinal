@@ -17,14 +17,7 @@ import { WishlistService } from '../wishlist.service';
 export class ApiTestComponent implements OnInit {
   baseUrl: string;
 
-  constructor(private testService: TestService, private partsService: PartsService, private route: ActivatedRoute, private router: Router, @Inject('BASE_URL') baseUrl: string, private collectionService: CollectionService, private wishlistService: WishlistService) {
-
-    this.baseUrl = baseUrl;
-
- 
-
-  baseUrl: string;
-  constructor(private testService: TestService, private partsService: PartsService, private route: ActivatedRoute, private router: Router, @Inject('BASE_URL') baseUrl: string)
+  constructor(private testService: TestService, private partsService: PartsService, private route: ActivatedRoute, private router: Router, @Inject('BASE_URL') baseUrl: string, private collectionService: CollectionService, private wishlistService: WishlistService) 
   {
     this.baseUrl = baseUrl;
   }
@@ -69,11 +62,11 @@ export class ApiTestComponent implements OnInit {
   //}
 
   addFavorite(favorite: Collection) {
-    this.collectionService.postItemToCollection(favorite).subscribe()
+    this.collectionService.postItemToCollection(this.baseUrl, favorite).subscribe()
   }
 
   addWishlist(wish: WishList) {
-    this.wishlistService.postItemToWishList(wish).subscribe()
+    this.wishlistService.postItemToWishList(this.baseUrl, wish).subscribe()
   }
 
 }
