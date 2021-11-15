@@ -4,6 +4,10 @@ import { LegoResponse, Results } from '../Models/LegoResponse';
 import { PartsResult } from '../Models/PartsResponse';
 import { PartsService } from '../parts.service';
 import { TestService } from '../test.service';
+import { Collection } from '../Models/collection';
+import { CollectionService } from '../collection.service';
+import { WishList } from '../Models/wish-list';
+import { WishlistService } from '../wishlist.service';
 
 @Component({
   selector: 'app-api-test',
@@ -11,12 +15,11 @@ import { TestService } from '../test.service';
   styleUrls: ['./api-test.component.css']
 })
 export class ApiTestComponent implements OnInit {
-
   baseUrl: string;
-  constructor(private testService: TestService, private partsService: PartsService, private route: ActivatedRoute, private router: Router, @Inject('BASE_URL') baseUrl: string)
-  {
+
+  constructor(private testService: TestService, private partsService: PartsService, private route: ActivatedRoute, private router: Router, @Inject('BASE_URL') baseUrl: string, private collectionService: CollectionService, private wishlistService: WishlistService) {
+
     this.baseUrl = baseUrl;
-  }
 
   results!: LegoResponse;
   sets!: Results[];
@@ -56,4 +59,14 @@ export class ApiTestComponent implements OnInit {
   //searchLegoResponse(userInput: string) {
   //  console.log(userInput);
   //}
+
+  addFavorite(favorite: Collection) {
+    this.collectionService.postItemToCollection(favorite).subscribe()
+  }
+
+  addWishlist(wish: WishList) {
+    this.wishlistService.postItemToWishList(wish).subscribe()
+  }
+
 }
+

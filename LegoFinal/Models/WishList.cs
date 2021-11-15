@@ -10,8 +10,8 @@ namespace LegoFinal.Models
         public int WishListId { get; set; }
         public int? SetId { get; set; }
         public string UserId { get; set; }
-        public string SetName { get; set; }
-        public string SetNumber { get; set; }
+        public string name { get; set; }
+        public string set_num { get; set; }
         public int? NumberofPieces { get; set; }
         public int? Qauntity { get; set; }
 
