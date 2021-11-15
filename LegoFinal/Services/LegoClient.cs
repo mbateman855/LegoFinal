@@ -38,6 +38,16 @@ namespace LegoFinal.Services
             return detailResponse;
         }
 
+        public async Task<LegoResponse> GetSearchSetsAsync(string query)
+        {
+
+            var response = await _httpClient.GetAsync($"lego/sets/?search={query}");
+            var jsonResponse = await response.Content.ReadAsStringAsync();
+            var legoResponse = JsonSerializer.Deserialize<LegoResponse>(jsonResponse);
+
+            return legoResponse;
+        }
+
         public async Task<PartsResponse> GetPartsAsync()
         {
             var response = await _httpClient.GetAsync("lego/parts/");
