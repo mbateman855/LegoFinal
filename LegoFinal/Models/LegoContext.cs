@@ -144,11 +144,11 @@ namespace LegoFinal.Models
 
                 entity.Property(e => e.SetId).HasColumnName("SetID");
 
-                entity.Property(e => e.SetName)
+                entity.Property(e => e.name)
                     .HasMaxLength(200)
                     .IsUnicode(false);
 
-                entity.Property(e => e.SetNumber)
+                entity.Property(e => e.set_num)
                     .HasMaxLength(500)
                     .IsUnicode(false);
 
@@ -251,11 +251,11 @@ namespace LegoFinal.Models
 
                 entity.Property(e => e.SetId).HasColumnName("SetID");
 
-                entity.Property(e => e.SetName)
+                entity.Property(e => e.name)
                     .HasMaxLength(200)
                     .IsUnicode(false);
 
-                entity.Property(e => e.SetNumber)
+                entity.Property(e => e.set_num)
                     .HasMaxLength(500)
                     .IsUnicode(false);
 

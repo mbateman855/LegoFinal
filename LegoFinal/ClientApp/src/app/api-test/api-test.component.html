@@ -26,22 +26,26 @@
   <tbody>
     <tr *ngFor="let set of sets">
       <td>
-          <a [routerLink]="['/set-details', set.set_num]" routerLinkActive="active">
-            {{set.name}}
-          </a>
+        <a [routerLink]="['/set-details', set.set_num]" routerLinkActive="active">
+          {{set.name}}
+        </a>
       </td>
       <td>{{set.year}}</td>
-      <td>{{set.num_parts}}
-      <details>
-        <ul *ngFor="let part of parts">
-          <li>{{part.id}}</li>
-         </ul>
+      <td>
+        {{set.num_parts}}
+        <details>
+          <ul *ngFor="let part of parts">
+            <li>{{part.id}}</li>
+          </ul>
         </details>
       </td>
-      <td><img src="{{set.set_img_url}}"/></td>
-      <!--<td>
-        <button class="btn-primary btn" onclick="displaySetDetails(set)">Set Details</button>
-      </td>-->
+      <td><img src="{{set.set_img_url}}" /></td>
+      <td>
+        <button (click)="addFavorite(set)">add favorite</button>
+      </td>
+      <td>
+        <button (click)="addWishlist(set)">add Wishlist</button>
+      </td>
     </tr>
   </tbody>
 </table>
