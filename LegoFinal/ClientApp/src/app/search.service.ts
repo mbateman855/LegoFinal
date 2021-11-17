@@ -11,6 +11,6 @@ export class SearchService {
 
   getSearchResults(baseUrl: string, query: string)
   {
-    return this.httpClient.get<LegoResponse>(baseUrl + "api/legoresponse" + query);
+    return this.httpClient.get<LegoResponse>(baseUrl + "api/search/" + query);
   }
 }

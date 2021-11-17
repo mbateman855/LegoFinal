@@ -40,12 +40,12 @@ namespace LegoFinal.Controllers
             return legoDetails;
         }
 
-        [HttpGet("{query}")]
-        public async Task<LegoResponse> GetSearchSets(string query)
-        {
-            var legoResponse = await _legoClient.GetSearchSetsAsync(query);
-            //rename this method to be more specific
-            return legoResponse;
-        }
+        //[HttpGet("{query}")]
+        //public async Task<LegoResponse> GetSearchSets(string query)
+        //{
+        //    var legoResponse = await _legoClient.GetSearchSetsAsync(query);
+        //    //rename this method to be more specific
+        //    return legoResponse;
+        //}
     }
 }
