@@ -8,10 +8,10 @@ namespace LegoFinal.Models
     public partial class Collection
     {
         public int CollectionId { get; set; }
-        public int? SetId { get; set; }
+        public int? SetId { get; set; } = 1;
         public string UserId { get; set; }
-        public string SetName { get; set; }
-        public string SetNumber { get; set; }
+        public string name { get; set; }
+        public string set_num { get; set; }
         public int? Quantity { get; set; }
 
         public virtual LegoSet Set { get; set; }

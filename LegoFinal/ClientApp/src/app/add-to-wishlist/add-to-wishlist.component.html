@@ -3,10 +3,10 @@
 
 <form>
   <label>Lego Set Name: </label>
-  <input type="text" class="form-control" id="SetName" name="SetName" #SetName />
+  <input type="text" class="form-control" id="name" name="name" #name />
 
   <label>Set Number:</label>
-  <input type="text" class="form-control" id="SetNumber" name="SetNumber" #SetNumber />
+  <input type="text" class="form-control" id="set_num" name="set_num" #set_num />
 
   <label>Number of Pieces:</label>
   <input type="text" class="form-control" id="NumberOfPieces" name="NumberOfPieces" #NumberOfPieces />
@@ -18,5 +18,5 @@
   <input type="text" class="form-control" id="SetId" name="SetId" #SetId />
 
 
-  <button class="btn-primary btn-primary" (click)="addItemToWishList(SetName.value, SetNumber.value, NumberOfPieces.value, Quantity.value, SetId.value)">Add Item</button>
+  <button class="btn-primary btn-primary" (click)="addItemToWishList(name.value, set_num.value, NumberOfPieces.value, Quantity.value, SetId.value)">Add Item</button>
 </form>
