@@ -39,11 +39,18 @@ export class CollectionComponent implements OnInit {
   onDelete(id: number) {
     this.collectionService.deleteCollection(this.baseUrl, id)
       .subscribe(result => {
-        this.collectionService.getCollection(this.baseUrl);
-        this.router.navigateByUrl('/collection');
+        this.collectionService.getCollection(this.baseUrl)
+          .subscribe(result => {
+            this.collectionItems = result;
+          })
+
+
       })
 
   }
+
+
+
 
  
   btnClick = function () {
