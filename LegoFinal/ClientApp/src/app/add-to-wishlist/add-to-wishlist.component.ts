@@ -21,10 +21,10 @@ export class AddToWishlistComponent implements OnInit {
   ngOnInit() {
   }
 
-  addItemToWishList(setName: string, setNumber: number, numberOfPieces: number, quantity: number, setId: number) {
+  addItemToWishList(name: string, set_num: number, numberOfPieces: number, quantity: number, setId: number) {
     let wishListItem = new WishList();
-    wishListItem.setName = setName;
-    wishListItem.setNumber = setNumber;
+    wishListItem.name = name;
+    wishListItem.set_num = set_num;
     wishListItem.numberOfPieces = numberOfPieces;
     wishListItem.quantity = quantity;
     wishListItem.setId = setId;

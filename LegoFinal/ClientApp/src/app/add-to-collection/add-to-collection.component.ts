@@ -20,10 +20,10 @@ export class AddToCollectionComponent implements OnInit {
   ngOnInit() {
   }
 
-  addItemToCollection(setName: string, setNumber: string, quantity: number, setId: number) { 
+  addItemToCollection(name: string, set_num: string, quantity: number, setId: number) {
     let collectionItem = new Collection();
-    collectionItem.setName = setName;
-    collectionItem.setNumber = setNumber;
+    collectionItem.name = name;
+    collectionItem.set_num = set_num;
     collectionItem.quantity = quantity;
     collectionItem.setId = setId;
     //collectionItem.userId = userId;

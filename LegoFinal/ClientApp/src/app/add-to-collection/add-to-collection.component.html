@@ -2,7 +2,7 @@
 
 <form>
   <label>Lego Set Name: </label>
-  <input type="text" class="form-control" id="SetName" name="SetName" #SetName />
+  <input type="text" class="form-control" id="name" name="name" #name />
 
   <label>Set Number:</label>
   <input type="text" class="form-control" id="SetNumber" name="SetNumber" #SetNumber />
@@ -16,5 +16,5 @@
 
 
 
-  <button class="btn-primary btn-primary" (click)="addItemToCollection(SetName.value, SetNumber.value, Quantity.value, SetId.value)">Add Item</button>
+  <button class="btn-primary btn-primary" (click)="addItemToCollection(name.value, SetNumber.value, Quantity.value, SetId.value)">Add Item</button>
 </form>
