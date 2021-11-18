@@ -26,7 +26,7 @@
 
 
 <div class="grid-container">
-  <ul>
+  <ul style="list-style-type:none;">
     <li>
       {{set.name}}
     </li>
@@ -52,7 +52,7 @@
   </ul>
 
   <div class="grid-container">
-    <ul *ngFor="let part of parts.results">
+    <ul style="list-style-type:none;" *ngFor="let part of parts.results">
       <li>
         <a href="{{part.part.part_url}}">{{part.part.name}}</a>
       </li>
