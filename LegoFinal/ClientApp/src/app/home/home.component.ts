@@ -1,6 +1,7 @@
 import { Component, Inject } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { LegoResponse, Results } from '../Models/LegoResponse';
+import { SearchService } from '../search.service';
 import { TestService } from '../test.service';
 
 
@@ -16,10 +17,7 @@ export class HomeComponent {
   userInput: string;
   baseUrl: string;
 
-  constructor(private testService: TestService, private route: ActivatedRoute, private router: Router, @Inject('BASE_URL') baseUrl: string)
-  {
-    this.baseUrl = baseUrl;
-  }
+  constructor(private testService: TestService, private searchService: SearchService, private route: ActivatedRoute, private router: Router, @Inject('BASE_URL') baseUrl: string) { this.baseUrl = baseUrl; }
 
   results!: LegoResponse;
   sets!: Results[];
@@ -27,19 +25,25 @@ export class HomeComponent {
 
 
   ngOnInit() {
-    this.testService.getSetResults(this.baseUrl)
-      .subscribe(result => {
-        this.results = result;
-        this.sets = result.results;
-        console.log(this.sets);
+    //this.testService.getSetResults(this.baseUrl)
+    //  .subscribe(result => {
+    //    this.results = result;
+    //    this.sets = result.results;
+    //    console.log(this.sets);
 
-      });
+    //  });
   }
 
   searchLegoResponse(userInput) {
    //location.replace("set_url")
-    this.filteredSets = this.sets.filter(set => set.name.toLowerCase().includes(userInput.toLowerCase()));
-    console.log(this.filteredSets);
+    //this.filteredSets = this.sets.filter(set => set.name.toLowerCase().includes(userInput.toLowerCase()));
+    //console.log(this.filteredSets);
+    this.searchService.getSearchResults(this.baseUrl, userInput)
+      .subscribe(result => {
+        this.results = result;
+        this.filteredSets = result.results;
+        console.log(this.filteredSets);
+      });
   }
 }
 

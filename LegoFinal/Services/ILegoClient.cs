@@ -10,6 +10,7 @@ namespace LegoFinal.Services
     {
         Task<LegoResponse> GetLegosAsync();
         Task<Result> GetLegoDetails(string id);
+        Task<LegoResponse> GetSearchSetsAsync(string query);
         Task<PartsResponse> GetPartsAsync();
         Task<PartsResponse> GetSetsPartsListAsync(string id);
     }
