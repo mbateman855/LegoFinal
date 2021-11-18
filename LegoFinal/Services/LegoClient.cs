@@ -21,7 +21,7 @@ namespace LegoFinal.Services
         public async Task<LegoResponse> GetLegosAsync()
         {
             
-            var response = await _httpClient.GetAsync("lego/sets/");
+            var response = await _httpClient.GetAsync("lego/sets/?page_size=18332");
             var jsonResponse = await response.Content.ReadAsStringAsync();
             var legoResponse = JsonSerializer.Deserialize<LegoResponse>(jsonResponse);
 
