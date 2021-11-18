@@ -27,6 +27,7 @@ export class SetDetailsComponent implements OnInit {
   }
 
 
+
   ngOnInit() {
     this.route.paramMap      .subscribe(params => {        let set_num = params.get('set_num');        console.log(set_num);        this.testService.getSetDetails(set_num, this.baseUrl).subscribe(x => {
           this.set = x;          console.log(this.set);        });        this.partsService.getPartResults(set_num, this.baseUrl).subscribe(x => {          this.parts = x;          console.log(this.parts);
