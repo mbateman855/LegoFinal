@@ -1,4 +1,4 @@
-<p>set-details works!</p>
+<p style="font-size:25px;"><b>Your search result</b></p>
 
 
   <style>
@@ -16,6 +16,10 @@
         text-align: center;
         font-size: 20px;
       }
+      img{
+        width: 80%;
+        height: auto;
+      }
   </style>
 
 
@@ -26,10 +30,10 @@
     <li>
       {{set.name}}
     </li>
-    <li>
+    <li> Release Date:
       {{set.year}}
     </li>
-    <li>
+    <li>Number of pieces:
       {{set.num_parts}}
     </li>
     <li>
@@ -37,6 +41,12 @@
     </li>
     <li>
       <!--{{set.set_url}}-->
+    </li>
+    <li>
+      <button (click)="addFavorite(set)">add My Collection</button>
+    </li>
+    <li>
+      <button (click)="addWishlist(set)">add Wishlist</button>
     </li>
 
   </ul>
